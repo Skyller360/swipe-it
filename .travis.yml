@@ -20,7 +20,7 @@ install:
 before_script:
   - export CI=false
 script:
-  - yarn test
+  - yarn build
 deploy:
   skip_cleanup: true
   provider: script
