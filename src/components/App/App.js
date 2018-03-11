@@ -1,42 +1,34 @@
 import React, { Component } from 'react';
 import Square from '../Square/Square.js';
+import Palette from '../Palette/Palette.js';
 import './App.scss';
 
 class App extends Component {
 
   constructor() {
     super();
+    this.switchColor = this.switchColor.bind(this);
 
     this.state = {
-      squareNbr: 12,
-      squares: []
+      selectedColor: 'white',
+      colors: ['green', 'red', 'blue']
     };
   }
 
-  componentWillMount() {
-    this.constructSquares();
+  switchColor(selectedColor) {
+    this.setState({
+      selectedColor
+    });
   }
 
-  constructSquares() {
-    let squares = [];
-
-    for (let i = 0; i < this.state.squareNbr; i++) {
-      squares = [
-        ...squares,
-        <Square key={i} />
-      ];
-    }
-
-    this.setState({
-      squares
-    });
-
+  constructElems(color) {
+    return <div key={`div_${color}`}> <Square key={`square_${color}`} color={this.state.selectedColor} /> <Palette color={color} key={`palette_${color}`} click={() => this.switchColor(color)} /> </div>
   }
 
   render() {
     return (
       <div className="App">
-        { this.state.squares.map(square => square) }
+        { this.state.colors.map(color => this.constructElems(color)) }
       </div>
     );
   }

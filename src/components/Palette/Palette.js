@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import io from 'socket.io-client';
 
-import './Square.scss';
+import './Palette.scss';
 
-class Square extends Component {
+class Palette extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       color: ''
     };
@@ -14,21 +15,15 @@ class Square extends Component {
 
   componentWillMount() {
     this.setState({
-      color: 'white'
-    });
-  }
-
-  switchColor() {
-    this.setState({
       color: this.props.color
     });
   }
 
   render() {
     return (
-      <div className={'square'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}></div>
+      <div className={'palette'} style={{backgroundColor: this.state.color}} onClick={this.props.click}></div>
     );
   }
 }
 
-export default Square;
+export default Palette;
