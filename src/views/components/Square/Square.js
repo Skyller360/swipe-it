@@ -9,32 +9,31 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    switchColor: (color) => {
-      dispatch({
-        type: 'CHANGE_COLOR',
-        payload: color
-      });
-    }
-  }
-}
-
 class Square extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: this.props.color
+    };
+  }
 
   componentWillMount() {
     console.log('props', this.props);
   }
 
   switchColor() {
-    this.props.changeColor();
+    console.log('props', this.props.color);
+    this.setState({
+      color: this.props.color.color
+    });
   }
 
   render() {
     return (
-      <div className={'square'} style={{backgroundColor: this.props.color}} onClick={() => this.switchColor()}></div>
+      <div className={'square'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}></div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Square);
+export default connect(mapStateToProps)(Square);

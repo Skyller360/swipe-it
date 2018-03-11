@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import Square from './components/Square/Square.js';
 import Palette from './components/Palette/Palette.js';
+import { connect } from 'react-redux';
 import './App.scss';
+
+const mapStateToProps = (state) => {
+  return {
+    color: state.colorState
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    switchColor: (color) => {
+      dispatch({
+        type: 'CHANGE_COLOR',
+        payload: color
+      });
+    }
+  }
+}
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      selectedColor: 'white',
-      colors: ['green', 'red', 'blue', 'orange'],
+      colors: ['green', 'blue', 'red', 'orange', 'pink'],
       squares: 12
     };
   }
 
   switchColor(selectedColor) {
-    this.setState({
-      selectedColor
-    });
+    this.props.switchColor(selectedColor);
   }
 
   constructPalettes(color) {
@@ -29,7 +44,7 @@ class App extends Component {
     for (let i = 0; i < this.state.squares; i++) {
       result = [
         ...result,
-        <div key={`div_${i}`}> <Square key={`square_${i}`} color={this.state.selectedColor} /> </div>
+        <div key={`div_${i}`}> <Square key={`square_${i}`} color={this.props.color} /> </div>
       ]
     }
     return result;
@@ -49,4 +64,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
