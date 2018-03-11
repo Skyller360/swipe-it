@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import Square from '../Square/Square.js';
-import Palette from '../Palette/Palette.js';
+import Square from './components/Square/Square.js';
+import Palette from './components/Palette/Palette.js';
 import './App.scss';
 
 class App extends Component {
 
   constructor() {
     super();
-
     this.state = {
       selectedColor: 'white',
       colors: ['green', 'red', 'blue', 'orange'],
