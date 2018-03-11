@@ -7,11 +7,11 @@ class App extends Component {
 
   constructor() {
     super();
-    this.switchColor = this.switchColor.bind(this);
 
     this.state = {
       selectedColor: 'white',
-      colors: ['green', 'red', 'blue']
+      colors: ['green', 'red', 'blue', 'orange'],
+      squares: 12
     };
   }
 
@@ -21,14 +21,26 @@ class App extends Component {
     });
   }
 
-  constructElems(color) {
-    return <div key={`div_${color}`}> <Square key={`square_${color}`} color={this.state.selectedColor} /> <Palette color={color} key={`palette_${color}`} click={() => this.switchColor(color)} /> </div>
+  constructPalettes(color) {
+    return <div key={`div_${color}`}> <Palette color={color} key={`palette_${color}`} click={() => this.switchColor(color)} /> </div>
+  }
+
+  constructSquares() {
+    let result = [];
+    for (let i = 0; i < this.state.squares; i++) {
+      result = [
+        ...result,
+        <div key={`div_${i}`}> <Square key={`square_${i}`} color={this.state.selectedColor} /> </div>
+      ]
+    }
+    return result;
   }
 
   render() {
     return (
       <div className="App">
-        { this.state.colors.map(color => this.constructElems(color)) }
+        { this.state.colors.map(color => this.constructPalettes(color)) }
+        { this.constructSquares() }
       </div>
     );
   }

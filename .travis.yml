@@ -2,28 +2,27 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  # LTS version
-  - "8.0"
-before_install: # if "install" is overridden
-  # Repo for Yarn
-  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn
-cache:
-  yarn: true
+- '8.0'
+before_install:
+- sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+- sudo apt-get update -qq
+- sudo apt-get install -y -qq yarn
 cache:
   directories:
-    - node_modules
+  - node_modules
 install:
-  - yarn install
+- yarn install
 before_script:
-  - export CI=false
+- export CI=false
 script:
-  - yarn build
+- yarn build
 deploy:
   skip_cleanup: true
   provider: script
   script: yarn build
   on:
-    branch: ["master"]
+    branch:
+    - master
+  api_key:
+    secure: w3pdSra6F+vXALoGYNrLFTHacLbcak2FHrjsDxHu5Hmc02nevtGdmdtkwAQz5tP4ZecEdhYTvbUSS3hEN3h9aziClLBQ4mdWUsiH6MWHIWzcsE7a2YCFFs5EfBZ2FwsjAWiebzjyVnsL3pgzxqVFycwylsbAl5qTZdIid90LI/WARBg/2fEb+F+C4tfxeAsb3iCsazceOR/MhcJ6Syo7dF86VkwdF43liD6/BXp/uj6Cifok9BUQprE3c0bzY4KGXD0D72x3hnQo5tjc+xQ8xfe1klTu6C4CW7iKoEVETtHgb6x6PKUklq6MxUWYbX0iodUOBs1wWNrnV1PEEhNLa55bSSxs1DX1/L2ZiMETUyqBiBGIJEriJDumUac03YV6L/X/Qbh+S8JtSYLtI1u45mQHpkNU3dZLDnD4CIMNGGf+AdA4Qt4/VmHVTrR9AYQbZiW3v6ix+THUW13T7+gsCRrv+N4zYg2QbslovI1KA/PgE4TWaES/7OZrEVYnp3GVH16xDn0XqTOEgr6lkP+IxUPL67SDk2p+BjspEFWs1SYfo12pnx11mMWYW0HaZwm6fvYX7lQVKPuBmXQnYTp+6gcHeJJAObODBzu+MpBdLm8zVQTl4myGEzXySTvzSB/Ni19/MqjqbnwKc6xN7vFquVylMGs2Xnn/VIOWZfiUR24=
