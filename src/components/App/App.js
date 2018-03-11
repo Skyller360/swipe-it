@@ -39,8 +39,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.state.colors.map(color => this.constructPalettes(color)) }
-        { this.constructSquares() }
+        <div className="App_palette">
+          { this.state.colors.map(color => this.constructPalettes(color)) }
+        </div>
+        <div className="App_square">
+          { this.constructSquares() }
+        </div>
       </div>
     );
   }
