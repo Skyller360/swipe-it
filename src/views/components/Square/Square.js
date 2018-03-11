@@ -19,11 +19,9 @@ class Square extends Component {
   }
 
   componentWillMount() {
-    console.log('props', this.props);
   }
 
   switchColor() {
-    console.log('props', this.props.color);
     this.setState({
       color: this.props.color.color
     });
