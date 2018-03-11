@@ -5,7 +5,7 @@ import './Square.scss';
 
 const mapStateToProps = (state) => {
   return {
-    color: state.colorState
+    color: state.colorState.color
   }
 }
 
@@ -23,7 +23,7 @@ class Square extends Component {
 
   switchColor() {
     this.setState({
-      color: this.props.color.color
+      color: this.props.color
     });
   }
 

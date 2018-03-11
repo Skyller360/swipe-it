@@ -6,7 +6,8 @@ import './App.scss';
 
 const mapStateToProps = (state) => {
   return {
-    color: state.colorState
+    color: state.colorState.color,
+    ids: state.squareState.ids
   }
 }
 
