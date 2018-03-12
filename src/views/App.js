@@ -30,20 +30,20 @@ class App extends Component {
       colors: [{color: 'green', id: 1}, {color: 'blue', id: 2}, {color: 'red', id: 3}, {color: 'orange', id: 4}, {color: 'pink', id: 5}],
       squares: [
         {shouldBe: 'green', id: 1},
-        {shouldBe: 'blue', id: 2},
-        {shouldBe: 'red', id: 3},
-        {shouldBe: 'orange', id: 4},
-        {shouldBe: 'pink', id: 5},
         {shouldBe: 'green', id: 1},
-        {shouldBe: 'blue', id: 2},
+        {shouldBe: 'white', id: 3},
+        {shouldBe: 'white', id: 4},
+        {shouldBe: 'white', id: 5},
+        {shouldBe: 'white', id: 1},
         {shouldBe: 'red', id: 3},
-        {shouldBe: 'orange', id: 4},
-        {shouldBe: 'pink', id: 5},
-        {shouldBe: 'green', id: 1},
-        {shouldBe: 'blue', id: 2},
         {shouldBe: 'red', id: 3},
-        {shouldBe: 'orange', id: 4},
-        {shouldBe: 'pink', id: 5}
+        {shouldBe: 'white', id: 4},
+        {shouldBe: 'white', id: 5},
+        {shouldBe: 'white', id: 1},
+        {shouldBe: 'red', id: 3},
+        {shouldBe: 'red', id: 3},
+        {shouldBe: 'white', id: 4},
+        {shouldBe: 'white', id: 5}
       ],
       selectedColor: 'white'
     };

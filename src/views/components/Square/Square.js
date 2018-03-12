@@ -15,7 +15,8 @@ class Square extends Component {
     super(props);
     this.state = {
       color: this.props.color,
-      shouldBe: this.props.shouldBe
+      shouldBe: this.props.shouldBe,
+      display: this.props.shouldBe === 'white'
     };
   }
 
@@ -33,7 +34,7 @@ class Square extends Component {
 
   render() {
     return (
-      <div className={'square'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>{this.props.id}</div>
+      <div className={this.state.display ? 'square' : 'square_border'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>{this.state.display ? '' : this.props.id}</div>
     );
   }
 }

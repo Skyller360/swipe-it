@@ -3,13 +3,12 @@
     width: calc(100vw / 12);
     height: calc(100vw / 12);
     margin: auto;
-    border: solid 1px black;
 
-    &_red {
-        background: red;
-    }
 
-    &_blue {
-        background: blue;
+    &_border {
+      width: calc(100vw / 12);
+      height: calc(100vw / 12);
+      margin: auto;
+      border: solid 1px black;
     }
 }
