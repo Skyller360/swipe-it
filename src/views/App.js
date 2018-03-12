@@ -28,7 +28,7 @@ class App extends Component {
     super();
     this.state = {
       colors: ['green', 'blue', 'red', 'orange', 'pink'],
-      squares: 12
+      squares: ['green']
     };
   }
 
@@ -40,15 +40,8 @@ class App extends Component {
     return <div key={`div_${color}`}> <Palette color={color} key={`palette_${color}`} click={() => this.switchColor(color)} /> </div>
   }
 
-  constructSquares() {
-    let result = [];
-    for (let i = 0; i < this.state.squares; i++) {
-      result = [
-        ...result,
-        <div key={`div_${i}`}> <Square key={`square_${i}`} color={this.props.color} /> </div>
-      ]
-    }
-    return result;
+  constructSquares(color, shouldBe) {
+    return <div key={`div_square_${color}`}> <Square key={`square_${color}`} color={color} shouldBe={shouldBe} /> </div>;
   }
 
   render() {
@@ -58,7 +51,7 @@ class App extends Component {
           { this.state.colors.map(color => this.constructPalettes(color)) }
         </div>
         <div className="App_square">
-          { this.constructSquares() }
+          { this.state.squares.map(color => this.constructSquares(color, color)) }
         </div>
       </div>
     );

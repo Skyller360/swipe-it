@@ -14,17 +14,21 @@ class Square extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: this.props.color
+      color: this.props.color,
+      shouldBe: this.props.shouldBe
     };
   }
 
   componentWillMount() {
+    console.log('props', this.props);
   }
 
   switchColor() {
-    this.setState({
-      color: this.props.color
-    });
+    if (this.props.color === this.state.shouldBe) {
+      this.setState({
+        color: this.props.color
+      });
+    }
   }
 
   render() {
