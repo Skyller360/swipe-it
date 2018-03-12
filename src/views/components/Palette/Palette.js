@@ -21,7 +21,7 @@ class Palette extends Component {
 
   render() {
     return (
-      <div className={'palette'} style={{backgroundColor: this.state.color}} onClick={this.props.click}></div>
+      <div className={'palette'} style={{backgroundColor: this.state.color}} onClick={this.props.click}>{this.props.id}</div>
     );
   }
 }

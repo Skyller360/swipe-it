@@ -2,6 +2,8 @@
 
   &_square {
     display: flex;
+    width: 600px;
+    flex-wrap: wrap;
   }
 
   &_palette {

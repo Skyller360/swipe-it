@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import './Square.scss';
+import './TilesMap.scss';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,14 +9,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-class Square extends Component {
+class TilesMap extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      color: this.props.color,
-      shouldBe: this.props.shouldBe
-    };
   }
 
   componentWillMount() {
@@ -33,9 +29,10 @@ class Square extends Component {
 
   render() {
     return (
-      <div className={'square'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>{this.props.id}</div>
+      <div className="TilesMap">
+      </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(Square);
+export default connect(mapStateToProps)(TilesMap);

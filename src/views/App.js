@@ -27,8 +27,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      colors: ['green', 'blue', 'red', 'orange', 'pink'],
-      squares: ['green']
+      colors: [{color: 'green', id: 1}, {color: 'blue', id: 2}, {color: 'red', id: 3}, {color: 'orange', id: 4}, {color: 'pink', id: 5}],
+      squares: [
+        {shouldBe: 'green', id: 1},
+        {shouldBe: 'blue', id: 2},
+        {shouldBe: 'red', id: 3},
+        {shouldBe: 'orange', id: 4},
+        {shouldBe: 'pink', id: 5},
+        {shouldBe: 'green', id: 1},
+        {shouldBe: 'blue', id: 2},
+        {shouldBe: 'red', id: 3},
+        {shouldBe: 'orange', id: 4},
+        {shouldBe: 'pink', id: 5},
+        {shouldBe: 'green', id: 1},
+        {shouldBe: 'blue', id: 2},
+        {shouldBe: 'red', id: 3},
+        {shouldBe: 'orange', id: 4},
+        {shouldBe: 'pink', id: 5}
+      ],
+      selectedColor: 'white'
     };
   }
 
@@ -36,22 +53,22 @@ class App extends Component {
     this.props.switchColor(selectedColor);
   }
 
-  constructPalettes(color) {
-    return <div key={`div_${color}`}> <Palette color={color} key={`palette_${color}`} click={() => this.switchColor(color)} /> </div>
+  constructPalettes(obj) {
+    return <div key={`div_${obj.color}${obj.id}`}> <Palette color={obj.color} id={obj.id} key={`palette_${obj.color}${obj.id}`} click={() => this.switchColor(obj.color)} /> </div>
   }
 
-  constructSquares(color, shouldBe) {
-    return <div key={`div_square_${color}`}> <Square key={`square_${color}`} color={color} shouldBe={shouldBe} /> </div>;
+  constructSquares(color, square) {
+    return <div key={`div_square_${square.shouldBe}`}> <Square key={`square_${square.shouldBe}`} color={color} shouldBe={square.shouldBe} id={square.id} /></div>;
   }
 
   render() {
     return (
       <div className="App">
         <div className="App_palette">
-          { this.state.colors.map(color => this.constructPalettes(color)) }
+          { this.state.colors.map(obj => this.constructPalettes(obj)) }
         </div>
         <div className="App_square">
-          { this.state.squares.map(color => this.constructSquares(color, color)) }
+          { this.state.squares.map(square => this.constructSquares(this.state.selectedColor, square)) }
         </div>
       </div>
     );
