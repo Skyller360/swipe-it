@@ -53,22 +53,22 @@ class App extends Component {
     this.props.switchColor(selectedColor);
   }
 
-  constructPalettes(obj) {
-    return <div key={`div_${obj.color}${obj.id}`}> <Palette color={obj.color} id={obj.id} key={`palette_${obj.color}${obj.id}`} click={() => this.switchColor(obj.color)} /> </div>
+  constructPalettes(obj, index) {
+    return <div key={`div_${index}`}> <Palette color={obj.color} id={obj.id} key={`palette_${obj.color}${obj.id}${index}`} click={() => this.switchColor(obj.color)} /> </div>
   }
 
-  constructSquares(color, square) {
-    return <div key={`div_square_${square.shouldBe}`}> <Square key={`square_${square.shouldBe}`} color={color} shouldBe={square.shouldBe} id={square.id} /></div>;
+  constructSquares(color, square, index) {
+    return <div key={`div_square_${index}`}> <Square key={`square_${square.shouldBe}${index}`} color={color} shouldBe={square.shouldBe} id={square.id} /></div>;
   }
 
   render() {
     return (
       <div className="App">
         <div className="App_palette">
-          { this.state.colors.map(obj => this.constructPalettes(obj)) }
+          { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
         </div>
         <div className="App_square">
-          { this.state.squares.map(square => this.constructSquares(this.state.selectedColor, square)) }
+          { this.state.squares.map((square, index) => this.constructSquares(this.state.selectedColor, square, index)) }
         </div>
       </div>
     );
