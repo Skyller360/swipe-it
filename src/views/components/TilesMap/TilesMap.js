@@ -4,14 +4,18 @@ import Square from '../Square/Square';
 
 import './TilesMap.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    squares: state.squareState,
-    color: state.colorState
+@connect(
+  (state) => {
+    return {
+      squares: state.squareState,
+      color: state.colorState
+    }
+  },
+  () => {
+    return {}
   }
-}
-
-class TilesMap extends Component {
+)
+export default class TilesMap extends Component {
 
   constructor(props) {
     super(props);
@@ -75,5 +79,3 @@ class TilesMap extends Component {
     );
   }
 }
-
-export default connect(mapStateToProps)(TilesMap);

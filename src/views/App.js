@@ -5,25 +5,24 @@ import Palette from './components/Palette/Palette.js';
 import { connect } from 'react-redux';
 import './App.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    color: state.colorState.color,
-    ids: state.squareState.ids
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    switchColor: (color) => {
-      dispatch({
-        type: 'CHANGE_COLOR',
-        payload: color
-      });
+@connect(
+  (state) => {
+    return {
+      color: state.colorState.color,
+      ids: state.squareState.ids
     }
-  }
-}
-
-class App extends Component {
+  },
+  (dispatch) => {
+    return {
+      switchColor: (color) => {
+        dispatch({
+          type: 'CHANGE_COLOR',
+          payload: color
+        });
+      }
+    }
+})
+export default class App extends Component {
 
   constructor() {
     super();
@@ -71,5 +70,3 @@ class App extends Component {
     );
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

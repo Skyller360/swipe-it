@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 import './Square.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    color: state.colorState.color
-  }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    colorized: (id) => {
-      dispatch({
-        type: 'COLORIZED',
-        payload: id
-      });
+@connect(
+  (state) => {
+    return {
+      color: state.colorState.color
     }
-  }
-}
-
-class Square extends Component {
+  },
+  (dispatch) => {
+    return {
+      colored: (id) => {
+        dispatch({
+          type: 'COLORED',
+          payload: id
+        });
+      }
+    }
+})
+export default class Square extends Component {
 
   constructor(props) {
     super(props);
@@ -36,6 +38,7 @@ class Square extends Component {
       this.setState({
         color: this.props.color
       });
+      this.props.colored(this.props.id);
     }
   }
 
@@ -46,4 +49,10 @@ class Square extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Square);
+Square.propTypes = {
+  color: PropTypes.shape({
+    color: PropTypes.string
+  }),
+  shouldBe: PropTypes.string,
+  id: PropTypes.number
+};
