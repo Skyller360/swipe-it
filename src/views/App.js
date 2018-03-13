@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Square from './components/Square/Square.js';
+// import Square from './components/Square/Square.js';
+import TilesMap from './components/TilesMap/TilesMap.js';
 import Palette from './components/Palette/Palette.js';
 import { connect } from 'react-redux';
 import './App.scss';
@@ -57,18 +58,14 @@ class App extends Component {
     return <div key={`div_${index}`}> <Palette color={obj.color} id={obj.id} key={`palette_${obj.color}${obj.id}${index}`} click={() => this.switchColor(obj.color)} /> </div>
   }
 
-  constructSquares(color, square, index) {
-    return <div key={`div_square_${index}`}> <Square key={`square_${square.shouldBe}${index}`} color={color} shouldBe={square.shouldBe} id={square.id} /></div>;
-  }
-
   render() {
     return (
       <div className="App">
         <div className="App_palette">
           { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
         </div>
-        <div className="App_square">
-          { this.state.squares.map((square, index) => this.constructSquares(this.state.selectedColor, square, index)) }
+        <div>
+          <TilesMap type="apple" />
         </div>
       </div>
     );

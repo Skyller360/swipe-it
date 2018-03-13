@@ -9,6 +9,17 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    colorized: (id) => {
+      dispatch({
+        type: 'COLORIZED',
+        payload: id
+      });
+    }
+  }
+}
+
 class Square extends Component {
 
   constructor(props) {
@@ -18,10 +29,6 @@ class Square extends Component {
       shouldBe: this.props.shouldBe,
       display: this.props.shouldBe === 'white'
     };
-  }
-
-  componentWillMount() {
-    console.log('props', this.props);
   }
 
   switchColor() {
@@ -39,4 +46,4 @@ class Square extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Square);
+export default connect(mapStateToProps, mapDispatchToProps)(Square);
