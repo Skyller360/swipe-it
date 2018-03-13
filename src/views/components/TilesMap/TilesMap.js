@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Square from '../Square/Square';
 
 import './TilesMap.scss';
@@ -7,7 +8,7 @@ import './TilesMap.scss';
 @connect(
   (state) => {
     return {
-      squares: state.squareState,
+      ids: state.squareState.ids,
       color: state.colorState
     }
   },
@@ -20,17 +21,17 @@ export default class TilesMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: []
+      squares: [],
+      squareWithColor: []
     };
   }
 
   componentWillMount() {
-    console.log('props', this.props);
     this.setSquareMap(this.props.type);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps, this.props);
+  componentDidUpdate() {
+    this.verifyColoredSquare();
   }
 
   setSquareMap(type) {
@@ -41,19 +42,19 @@ export default class TilesMap extends Component {
         squares = [
           {shouldBe: 'green', id: 1},
           {shouldBe: 'green', id: 1},
-          {shouldBe: 'white', id: 3},
-          {shouldBe: 'white', id: 4},
-          {shouldBe: 'white', id: 5},
-          {shouldBe: 'white', id: 1},
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0},
           {shouldBe: 'red', id: 3},
           {shouldBe: 'red', id: 3},
-          {shouldBe: 'white', id: 4},
-          {shouldBe: 'white', id: 5},
-          {shouldBe: 'white', id: 1},
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0},
           {shouldBe: 'red', id: 3},
           {shouldBe: 'red', id: 3},
-          {shouldBe: 'white', id: 4},
-          {shouldBe: 'white', id: 5}
+          {shouldBe: 'white', id: 0},
+          {shouldBe: 'white', id: 0}
         ];
         break;
 
@@ -63,8 +64,15 @@ export default class TilesMap extends Component {
     }
 
     this.setState({
-      squares
+      squares,
+      squareWithColor: squares.filter(square => square.id !== 0)
     });
+  }
+
+  verifyColoredSquare() {
+    if (this.props.ids.length === this.state.squareWithColor.length) {
+      console.log('ended');
+    }
   }
 
   constructSquares(color, square, index) {
@@ -78,4 +86,9 @@ export default class TilesMap extends Component {
       </div>
     );
   }
+}
+
+TilesMap.PropTypes =  {
+  type: PropTypes.oneOf(['apple']),
+  color: PropTypes.string
 }

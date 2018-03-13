@@ -8,11 +8,9 @@ const colorReducer = (state = {color: ''}, action) => {
         ...state,
         color: action.payload
       };
-      break;
 
     default:
       return state;
-      break;
   }
 };
 

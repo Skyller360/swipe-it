@@ -11,11 +11,9 @@ const squareReducer = (state = {ids: []}, action) => {
           action.payload
         ]
       };
-      break;
 
     default:
       return state;
-      break;
   }
 };
 
