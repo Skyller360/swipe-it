@@ -19,7 +19,7 @@ import './Palette.scss';
     }
   }
 )
-class Palette extends Component {
+export default class Palette extends Component {
 
   constructor(props) {
     super(props);
@@ -47,5 +47,3 @@ class Palette extends Component {
     );
   }
 }
-
-export default Palette;

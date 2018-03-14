@@ -9,11 +9,18 @@ import './TilesMap.scss';
   (state) => {
     return {
       ids: state.squareState.ids,
-      color: state.colorState
+      color: state.colorState,
+      game: state.gameState
     }
   },
-  () => {
-    return {}
+  (dispatch) => {
+    return {
+      endGame: () => {
+        dispatch({
+          type: 'ENDED'
+        });
+      }
+    }
   }
 )
 export default class TilesMap extends Component {
@@ -70,8 +77,8 @@ export default class TilesMap extends Component {
   }
 
   verifyColoredSquare() {
-    if (this.props.ids.length === this.state.squareWithColor.length) {
-      console.log('ended');
+    if (this.props.ids.length === this.state.squareWithColor.length && !this.props.game.ended) {
+      this.props.endGame();
     }
   }
 
