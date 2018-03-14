@@ -37,7 +37,7 @@ export default class App extends Component {
           <h1 className={'App_header_title'}>Pixel art</h1>
         </header>
         <section className={'App_tiles'}>
-          <TilesMap type='apple' />
+          <TilesMap type='cherry' />
         </section>
         <section className={'App_palette'}>
           { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }

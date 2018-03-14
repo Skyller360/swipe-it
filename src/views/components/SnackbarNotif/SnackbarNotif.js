@@ -47,16 +47,16 @@ export default class SnackbarNotif extends Component {
           }}
           open={this.state.open}
           autoHideDuration={6000}
-          onClose={this.handleClose}
+          onClose={() => this.handleClose()}
           SnackbarContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">Game Finished !</span>}
+          message={<span id='message-id'>Game Finished !</span>}
           action={[
             <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
+              key='close'
+              aria-label='Close'
+              color='inherit'
               onClick={() => this.handleClose()}
             >
               X
