@@ -40,19 +40,19 @@ export default class TilesMap extends Component {
     switch (type) {
       case 'apple':
         squares = [
-          {shouldBe: 'green', id: 1},
-          {shouldBe: 'green', id: 1},
+          {shouldBe: '#4CAF50', id: 1},
+          {shouldBe: '#4CAF50', id: 1},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0},
-          {shouldBe: 'red', id: 3},
-          {shouldBe: 'red', id: 3},
+          {shouldBe: '#F44336', id: 3},
+          {shouldBe: '#F44336', id: 3},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0},
-          {shouldBe: 'red', id: 3},
-          {shouldBe: 'red', id: 3},
+          {shouldBe: '#F44336', id: 3},
+          {shouldBe: '#F44336', id: 3},
           {shouldBe: 'white', id: 0},
           {shouldBe: 'white', id: 0}
         ];

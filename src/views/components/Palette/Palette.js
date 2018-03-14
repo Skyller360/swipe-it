@@ -42,7 +42,7 @@ class Palette extends Component {
   render() {
     return (
       <Button variant="fab" color="inherit" aria-label="add" style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()} className={'palette'}>
-        <span>{this.props.id}</span>
+        <span className={'palette_text'}>{this.props.id}</span>
       </Button>
     );
   }

@@ -20,7 +20,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      colors: [{color: 'green', id: 1}, {color: 'blue', id: 2}, {color: 'red', id: 3}, {color: 'orange', id: 4}, {color: 'pink', id: 5}],
+      colors: [{color: '#4CAF50', id: 1}, {color: '#2196F3', id: 2}, {color: '#F44336', id: 3}, {color: '#FF9800', id: 4}, {color: '#E91E63', id: 5}],
       selectedColor: 'white'
     };
   }
