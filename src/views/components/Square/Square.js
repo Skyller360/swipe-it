@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Paper from "material-ui/Paper";
 import PropTypes from 'prop-types';
 
 import './Square.scss';
@@ -23,21 +24,35 @@ export default class Square extends Component {
     this.state = {
       color: this.props.color,
       shouldBe: this.props.shouldBe,
-      display: this.props.shouldBe === 'white'
+      display: this.props.shouldBe === 'white',
+      alreadyColored: false
     };
   }
 
   switchColor() {
-    if (this.props.color === this.state.shouldBe) {
-      this.setState({color: this.props.color});
+    if (this.props.color === this.state.shouldBe && !this.state.alreadyColored) {
+      this.setState({
+        color: this.props.color,
+        alreadyColored: true
+      });
       this.props.colored(this.props.id);
+    }
+  }
+
+  squareDisplay() {
+    if (!this.state.display) {
+      return <Paper className={'square'} elevation={1} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>
+                { this.props.id }
+              </Paper>
+    } else {
+      return <div className={'square'}></div>
     }
   }
 
   render() {
     return (
-      <div className={this.state.display ? 'square' : 'square_border'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>
-        { this.state.display ? '' : this.props.id }
+      <div>
+        { this.squareDisplay() }
       </div>
     );
   }

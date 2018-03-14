@@ -2,13 +2,5 @@
 
     width: calc(100vw / 12);
     height: calc(100vw / 12);
-    margin: auto;
-
-
-    &_border {
-      width: calc(100vw / 12);
-      height: calc(100vw / 12);
-      margin: auto;
-      border: solid 1px black;
-    }
+    margin: 1px;
 }

@@ -11,15 +11,8 @@ import './App.scss';
       color: state.colorState.color
     }
   },
-  (dispatch) => {
-    return {
-      switchColor: (color) => {
-        dispatch({
-          type: 'CHANGE_COLOR',
-          payload: color
-        });
-      }
-    }
+  () => {
+    return {}
   }
 )
 export default class App extends Component {
@@ -32,24 +25,23 @@ export default class App extends Component {
     };
   }
 
-  switchColor(selectedColor) {
-    this.props.switchColor(selectedColor);
-  }
-
   constructPalettes(obj, index) {
-    return <div key={`div_${index}`}> <Palette color={obj.color} id={obj.id} key={`palette_${obj.color}${obj.id}${index}`} click={() => this.switchColor(obj.color)} /> </div>
+    return <div key={`div_${index}`}> <Palette color={obj.color} id={obj.id} key={`palette_${index}`} /> </div>
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App_palette">
+      <section className="App">
+        <header className="App_header">
+          <h4>Pixel art</h4>
+        </header>
+        <section className="App_palette">
           { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
-        </div>
-        <div>
+        </section>
+        <section>
           <TilesMap type="apple" />
-        </div>
-      </div>
+        </section>
+      </section>
     );
   }
 }
