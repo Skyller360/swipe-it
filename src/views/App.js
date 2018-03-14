@@ -31,14 +31,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <section className={"App"}>
-        <header className={"App_header"}>
-          <h4>Pixel art</h4>
+      <section className={'App'}>
+        <header className={'App_header'}>
+          <h1 className={'App_header_title'}>Pixel art</h1>
         </header>
-        <section className={"App_tiles"}>
-          <TilesMap type="apple" />
+        <section className={'App_tiles'}>
+          <TilesMap type='apple' />
         </section>
-        <section className={"App_palette"}>
+        <section className={'App_palette'}>
           { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
         </section>
       </section>
