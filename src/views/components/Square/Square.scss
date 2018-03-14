@@ -3,4 +3,9 @@
     width: calc(100vw / 12);
     height: calc(100vw / 12);
     margin: 1px;
+    text-align: center;
+
+    &_text {
+      margin: 0 auto;
+    }
 }

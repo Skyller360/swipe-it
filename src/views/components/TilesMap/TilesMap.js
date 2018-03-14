@@ -76,7 +76,7 @@ export default class TilesMap extends Component {
   }
 
   constructSquares(color, square, index) {
-    return <div key={`div_square_${index}`}> <Square key={`square_${square.shouldBe}${index}`} color={color} shouldBe={square.shouldBe} id={square.id} /></div>;
+    return <Square key={`square_${square.shouldBe}${index}`} color={color} shouldBe={square.shouldBe} id={square.id} />;
   }
 
   render() {

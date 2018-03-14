@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
+
 import './Palette.scss';
 
 @connect(
@@ -39,7 +41,9 @@ class Palette extends Component {
 
   render() {
     return (
-      <div className={'palette'} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>{this.props.id}</div>
+      <Button variant="fab" color="inherit" aria-label="add" style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()} className={'palette'}>
+        <span>{this.props.id}</span>
+      </Button>
     );
   }
 }

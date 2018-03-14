@@ -42,7 +42,7 @@ export default class Square extends Component {
   squareDisplay() {
     if (!this.state.display) {
       return <Paper className={'square'} elevation={1} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>
-                { this.props.id }
+                <span className={'square_text'}>{ this.props.id }</span>
               </Paper>
     } else {
       return <div className={'square'}></div>

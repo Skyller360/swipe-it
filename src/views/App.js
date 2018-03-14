@@ -26,20 +26,20 @@ export default class App extends Component {
   }
 
   constructPalettes(obj, index) {
-    return <div key={`div_${index}`}> <Palette color={obj.color} id={obj.id} key={`palette_${index}`} /> </div>
+    return <Palette color={obj.color} id={obj.id} key={`palette_${index}`} />;
   }
 
   render() {
     return (
-      <section className="App">
-        <header className="App_header">
+      <section className={"App"}>
+        <header className={"App_header"}>
           <h4>Pixel art</h4>
         </header>
-        <section className="App_palette">
-          { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
-        </section>
-        <section>
+        <section className={"App_tiles"}>
           <TilesMap type="apple" />
+        </section>
+        <section className={"App_palette"}>
+          { this.state.colors.map((obj, index) => this.constructPalettes(obj, index)) }
         </section>
       </section>
     );

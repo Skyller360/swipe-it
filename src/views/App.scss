@@ -1,17 +1,26 @@
 .App {
+  width: 100%;
 
-  &_square {
+  &_game {
     display: flex;
-    width: 600px;
-    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
   }
 
   &_palette {
     display: flex;
-    align-self: baseline;
+    width: 50%;
+    margin: 10vh auto;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  &_tiles {
+    margin: 10vh 0;
+    text-align: center;
   }
 
   &_header {
-    
+    display: flex;
   }
 }
