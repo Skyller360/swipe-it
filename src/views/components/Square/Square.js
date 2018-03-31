@@ -29,7 +29,7 @@ export default class Square extends Component {
     };
   }
 
-  switchColor() {
+  switchColor = () => {
     if (this.props.color === this.state.shouldBe && !this.state.alreadyColored) {
       this.setState({
         color: this.props.color,
@@ -41,7 +41,7 @@ export default class Square extends Component {
 
   squareDisplay() {
     if (!this.state.display) {
-      return <Paper className={'square'} elevation={1} style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()}>
+      return <Paper className={'square'} elevation={10} style={{backgroundColor: this.state.color}} onClick={this.switchColor}>
                 <span className={'square_text'}>{ this.props.id }</span>
               </Paper>
     } else {

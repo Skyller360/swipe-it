@@ -35,13 +35,13 @@ export default class Palette extends Component {
     });
   }
 
-  switchColor() {
+  switchColor = () => {
     this.props.switchColor(this.state.color);
   }
 
   render() {
     return (
-      <Button variant="fab" color="inherit" aria-label="add" style={{backgroundColor: this.state.color}} onClick={() => this.switchColor()} className={'palette'}>
+      <Button variant="fab" color="inherit" aria-label="add" style={{backgroundColor: this.state.color}} onClick={this.switchColor} className={'palette'}>
         <span className={'palette_text'}>{this.props.id}</span>
       </Button>
     );

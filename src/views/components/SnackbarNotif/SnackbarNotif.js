@@ -32,7 +32,7 @@ export default class SnackbarNotif extends Component {
     }
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({
       open: false
     });
@@ -47,7 +47,7 @@ export default class SnackbarNotif extends Component {
           }}
           open={this.state.open}
           autoHideDuration={6000}
-          onClose={() => this.handleClose()}
+          onClose={this.handleClose}
           SnackbarContentProps={{
             'aria-describedby': 'message-id',
           }}
@@ -57,7 +57,7 @@ export default class SnackbarNotif extends Component {
               key='close'
               aria-label='Close'
               color='inherit'
-              onClick={() => this.handleClose()}
+              onClick={this.handleClose}
             >
               X
             </IconButton>,

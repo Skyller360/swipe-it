@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Square from './components/Square/Square.js';
 import TilesMap from './components/TilesMap/TilesMap.js';
 import Palette from './components/Palette/Palette.js';
 import SnackbarNotif from './components/SnackbarNotif/SnackbarNotif.js';
