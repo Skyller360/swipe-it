@@ -25,8 +25,23 @@ export default class Square extends Component {
       color: this.props.color,
       shouldBe: this.props.shouldBe,
       display: this.props.shouldBe === 'white',
-      alreadyColored: false
+      alreadyColored: false,
+      mouseDown: false
     };
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', () => {
+      this.setState({
+        mouseDown: true
+      });
+    });
+
+    document.addEventListener('mouseup', () => {
+      this.setState({
+        mouseDown: false
+      });
+    });
   }
 
   switchColor = () => {
@@ -39,9 +54,15 @@ export default class Square extends Component {
     }
   }
 
+  onMouseEnter = () =>  {
+    if (this.state.mouseDown) {
+      this.switchColor();
+    }
+  }
+
   squareDisplay() {
     if (!this.state.display) {
-      return <Paper className={'square'} elevation={10} style={{backgroundColor: this.state.color}} onClick={this.switchColor}>
+      return <Paper className={'square'} elevation={10} style={{backgroundColor: this.state.color}} onMouseDown={this.switchColor} onMouseEnter={this.onMouseEnter}>
                 <span className={'square_text'}>{ this.props.id }</span>
               </Paper>
     } else {
