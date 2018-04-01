@@ -1,4 +1,4 @@
-import actions from "./actions";
+import actions from './actions';
 
 const changeColor = color => {
   return actions.changeColor(color);

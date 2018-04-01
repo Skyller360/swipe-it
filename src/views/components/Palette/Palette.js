@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
-
+import { colorTypes } from '../../../state/ducks/color';
 import './Palette.scss';
 
 @connect(
@@ -12,7 +12,7 @@ import './Palette.scss';
     return {
       switchColor: (color) => {
         dispatch({
-          type: 'CHANGE_COLOR',
+          type: colorTypes.CHANGE_COLOR,
           payload: color
         });
       }

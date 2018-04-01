@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
 import PropTypes from 'prop-types';
-
+import { squareTypes } from '../../../state/ducks/square';
 import './Square.scss';
 
 @connect(
@@ -12,7 +12,9 @@ import './Square.scss';
   (dispatch) => {
     return {
       colored: (id) => {
-        dispatch({type: 'COLORED', payload: id});
+        dispatch({
+            type: squareTypes.COLORED, payload: id
+        });
       }
     }
   }
@@ -22,9 +24,9 @@ export default class Square extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: this.props.color,
-      shouldBe: this.props.shouldBe,
-      display: this.props.shouldBe === 'white',
+      color: props.color,
+      shouldBe: props.shouldBe,
+      display: props.shouldBe === 'white',
       alreadyColored: false,
       mouseDown: false
     };

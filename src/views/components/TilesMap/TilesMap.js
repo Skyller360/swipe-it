@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { gameTypes } from '../../../state/ducks/game';
 import PropTypes from 'prop-types';
 import Square from '../Square/Square';
 
@@ -17,7 +18,7 @@ import './TilesMap.scss';
     return {
       endGame: () => {
         dispatch({
-          type: 'ENDED'
+          type: gameTypes.ENDED
         });
       }
     }
